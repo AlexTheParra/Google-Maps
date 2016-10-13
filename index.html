@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<body style="in-height:100%;">
+<div id="container" style="width:50%; padding: 0 25%;">
+	<h1 text-align="center">Dream Vacation</h1>
+	<p>For my locations to visit, I would like to first go to the Hakkasan at the MGM Grand, where some of the biggest DJs
+	in the world have a residency at, then I would go to the Bayfront Park Amphitheatre to go to Ultra Music Festival, one of
+	the biggest music festivals in the world, and to top it off, go to Amnesia Ibiza to hear some more biggest DJs in the 
+	world. </p>
+	<div id="map" style="width:100%;height:500px;"></div>
+	<h2 text-align="center">The Hakkasan at the MGM Grand</h2>
+	<div id="map2" style="width:100%;height:500px;"></div>
+	<h2 text-align="center">Tiesto playing at Hakkasan</h2>
+	<img width="100%" src="maptest.jpg" />
+	<a href="http://electronic.vegas/news/tiesto-celebrates-gold-certified-singles-hakkasan-gold-party/">http://electronic.vegas/news/tiesto-celebrates-gold-certified-singles-hakkasan-gold-party/</a>
+</div>
+<script>
+	function myMap() {
+		// hakkasan in vegas 36.102254, -115.169958
+		// umf 2017 25.777073, -80.187445
+		// amnesia ibiza 38.921895, 1.297607
+		var myCenter = new google.maps.LatLng(31.388813,-61.435547);
+		//center for future use(s)
+		var mapCanvas = document.getElementById("map");
+		//map for future use(s)
+		var mapOptions = {center: myCenter, zoom: 3, styles: [
+		{"featureType":"landscape.man_made","elementType":"geometry.fill",
+		"stylers":[{"color":"#a1f199"}]},
+		{"featureType":"landscape.natural.landcover",
+		"elementType":"geometry.fill",
+		"stylers":[{"color":"#37bda2"}]},
+		{"featureType":"landscape.natural.terrain",
+		"elementType":"geometry.fill",
+		"stylers":[{"color":"#37bda2"}]},
+		{"featureType":"poi.attraction",
+		"elementType":"geometry.fill",
+		"stylers":[{"visibility":"on"}]},
+		{"featureType":"poi.business",
+		"elementType":"geometry.fill",
+		"stylers":[{"color":"#e4dfd9"}]},
+		{"featureType":"poi.business",
+		"elementType":"labels.icon",
+		"stylers":[{"visibility":"off"}]},
+		{"featureType":"poi.park",
+		"elementType":"geometry.fill",
+		"stylers":[{"color":"#37bda2"}]},
+		{"featureType":"road",
+		"elementType":"geometry.fill",
+		"stylers":[{"color":"#84b09e"}]},
+		{"featureType":"road",
+		"elementType":"geometry.stroke",
+		"stylers":[{"color":"#fafeb8"},
+		{"weight":"1.25"}]},
+		{"featureType":"road.highway",
+		"elementType":"labels.icon",
+		"stylers":[{"visibility":"off"}]},
+		{"featureType":"water",
+		"elementType":"geometry.fill",
+		"stylers":[{"color":"#2d99d8"}]}]};
+		//vars for the map w/ myCenter
+		var map = new google.maps.Map(mapCanvas, mapOptions);
+		//implementing the vars into the div w/ mapCanvas, mapOptions
+		var hakkasan = new google.maps.LatLng(36.102254, -115.169958);
+		var umf = new google.maps.LatLng(25.777073, -80.187445);
+		var ibiza = new google.maps.LatLng(38.921895, 1.297607);
+		var hM = new google.maps.Marker({position:hakkasan});
+		var uM = new google.maps.Marker({position:umf});
+		var iM = new google.maps.Marker({position:ibiza});
+		hM.setMap(map);
+		uM.setMap(map);
+		iM.setMap(map);
+		var path = new google.maps.Polyline({
+			path:[hakkasan, umf, ibiza],
+			strokeColor:"#0000ff",
+			strokeOpacity:.8,
+			strokeWeight:2
+		});
+		path.setMap(map);
+		var map2 = document.getElementById("map2");
+		var mapO2 = {center: hakkasan, zoom: 17, mapTypeId: google.maps.MapTypeId.HYBRID
+		};
+		var makemap2 = new google.maps.Map(map2, mapO2);
+	}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+</body>
+</html>
